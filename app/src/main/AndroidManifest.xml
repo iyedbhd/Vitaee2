@@ -10,17 +10,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.ApplicationCurriculumVitaeV2.NoActionBar">
         <activity
+            android:name=".resultNew"
+            android:exported="false"
+            android:label="@string/title_activity_result_new"
+            android:theme="@style/Theme.ApplicationCurriculumVitaeV2.NoActionBar.NoActionBar" />
+        <activity
             android:name=".ResultActivity"
             android:exported="true"
             android:label="Your Resume"
             android:theme="@style/Theme.ApplicationCurriculumVitaeV2" />
-
         <activity
             android:name=".SkillHobbiesActivity"
             android:exported="true"
             android:label="Create your resume"
-            android:theme="@style/Theme.ApplicationCurriculumVitaeV2"
-            />
+            android:theme="@style/Theme.ApplicationCurriculumVitaeV2" />
         <activity
             android:name=".SplashScreenActivity"
             android:exported="true">

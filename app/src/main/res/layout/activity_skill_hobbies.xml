@@ -195,7 +195,7 @@
             android:layout_margin="8dp">
 
             <CheckBox
-                android:id="@+id/checkBox_music"
+                android:id="@+id/checkbox_arabic"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="false"
@@ -204,7 +204,7 @@
                 android:textColor="@color/colorPrimary" />
 
             <CheckBox
-                android:id="@+id/checkBox_sport"
+                android:id="@+id/checkbox_fr"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
@@ -213,10 +213,10 @@
                 android:textColor="@color/colorPrimary" />
 
             <CheckBox
-                android:id="@+id/checkBox_game"
+                android:id="@+id/checkbox_eng"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignEnd="@id/checkBox_sport"
+                android:layout_alignEnd="@id/checkbox_fr"
                 android:layout_alignParentEnd="true"
                 android:buttonTint="@color/colorSecondary"
                 android:text="Games"
