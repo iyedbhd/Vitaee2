@@ -13,6 +13,10 @@ class resultNew : AppCompatActivity() {
     private lateinit var binding: ActivityResultNewBinding;
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        val actionbar = supportActionBar
+        actionbar!!.title = "Your resume"
+        actionbar.setDisplayHomeAsUpEnabled(true)
+        actionbar.setHomeAsUpIndicator(R.drawable.ic_baseline_home_24);
         super.onCreate(savedInstanceState)
         binding = ActivityResultNewBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -53,5 +57,11 @@ class resultNew : AppCompatActivity() {
             startActivity(intent)
 
         }
+
     }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
+    }
+
 }

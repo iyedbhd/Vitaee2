@@ -15,6 +15,7 @@ class careerActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityCareerBinding.inflate(layoutInflater)
+        setSupportActionBar(binding.toolbar.appBar);
         setContentView(binding.root)
 
         supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, CareerFragment.newInstance()).commit()
@@ -28,5 +29,9 @@ class careerActivity : AppCompatActivity() {
         }
         // supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, SkillsFragment.newInstance()).commit()
 
+    }
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return true
     }
 }
