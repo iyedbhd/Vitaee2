@@ -102,8 +102,10 @@ class MainActivity : AppCompatActivity() {
                 next.isEnabled = !(email.text.isEmpty() && name.text.isEmpty())
             }
         }
-
+        /*val intent = Intent(this, careerActivity::class.java)
+        startActivity(intent)*/
         next.setOnClickListener {
+
 
             val fullname = name.text.toString()
             val ageV2 = age.text.toString()

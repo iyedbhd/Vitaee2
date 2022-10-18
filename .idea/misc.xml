@@ -3,11 +3,17 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Work/Vitaee2/app/src/main/res/drawable/gradiant_overlay.xml" value="0.1685" />
+        <entry key="..\:/Work/Vitaee2/app/src/main/res/layout/activity_career.xml" value="0.284375" />
         <entry key="..\:/Work/Vitaee2/app/src/main/res/layout/activity_main.xml" value="0.33" />
         <entry key="..\:/Work/Vitaee2/app/src/main/res/layout/activity_result.xml" value="0.25" />
         <entry key="..\:/Work/Vitaee2/app/src/main/res/layout/activity_result_new.xml" value="0.25" />
         <entry key="..\:/Work/Vitaee2/app/src/main/res/layout/activity_skill_hobbies.xml" value="0.25" />
         <entry key="..\:/Work/Vitaee2/app/src/main/res/layout/activity_splash_screen.xml" value="0.17135416666666667" />
+        <entry key="..\:/Work/Vitaee2/app/src/main/res/layout/card_view_design.xml" value="0.2833333333333333" />
+        <entry key="..\:/Work/Vitaee2/app/src/main/res/layout/card_view_design2.xml" value="0.25" />
+        <entry key="..\:/Work/Vitaee2/app/src/main/res/layout/fragment_career.xml" value="0.284375" />
+        <entry key="..\:/Work/Vitaee2/app/src/main/res/layout/fragment_career2.xml" value="0.19384057971014493" />
         <entry key="..\:/Work/Vitaee2/app/src/main/res/layout/fragment_hobbies.xml" value="0.2078804347826087" />
         <entry key="..\:/Work/Vitaee2/app/src/main/res/layout/fragment_language.xml" value="0.19635416666666666" />
         <entry key="..\:/Work/Vitaee2/app/src/main/res/layout/fragment_skills.xml" value="0.33" />

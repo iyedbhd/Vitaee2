@@ -1,5 +1,6 @@
 package com.example.applicationcurriculumvitaev2
 
+import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -45,6 +46,12 @@ class resultNew : AppCompatActivity() {
         }
         binding.LangBtn.setOnClickListener{
             supportFragmentManager.beginTransaction().replace(R.id.fragmentContainerView, LanguageFragment.newInstance(language)).commit()
+        }
+
+        binding.careerBtn.setOnClickListener{
+            val intent = Intent(this, careerActivity::class.java)
+            startActivity(intent)
+
         }
     }
 }

@@ -15,6 +15,11 @@
             android:label="@string/title_activity_result_new"
             android:theme="@style/Theme.ApplicationCurriculumVitaeV2.NoActionBar.NoActionBar" />
         <activity
+            android:name=".careerActivity"
+            android:exported="false"
+            android:label="@string/title_activity_result_new"
+            android:theme="@style/Theme.ApplicationCurriculumVitaeV2.NoActionBar.NoActionBar" />
+        <activity
             android:name=".ResultActivity"
             android:exported="true"
             android:label="Your Resume"
