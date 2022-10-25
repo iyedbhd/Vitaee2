@@ -1,32 +1,37 @@
 package com.example.applicationcurriculumvitaev2
 
 import android.content.Intent
+import android.content.SharedPreferences
+import android.graphics.Bitmap
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.MediaStore
-import android.text.Editable
-import android.text.TextWatcher
+import android.util.Base64
 import android.util.Log
 import android.util.Patterns
-import android.widget.Button
-import android.widget.RadioButton
-import android.widget.RadioGroup
-import android.widget.TextView
-import androidx.core.view.isVisible
+import android.widget.*
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.graphics.drawable.toBitmap
 import androidx.core.widget.doOnTextChanged
 import com.example.applicationcurriculumvitaev2.databinding.ActivityMainBinding
-import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
+import java.io.ByteArrayOutputStream
+
 
 class MainActivity : AppCompatActivity() {
     private val pickImage = 100
     private var imageUri: Uri? = null
+    private var encodedImage:String = "";
     private lateinit var binding: ActivityMainBinding;
+
+    lateinit var mSharedPref: SharedPreferences;
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
         super.onCreate(savedInstanceState)
+        mSharedPref = getSharedPreferences(PREF_NAME, MODE_PRIVATE);
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         val name = findViewById<TextView>(R.id.NameInput)
@@ -120,9 +125,26 @@ class MainActivity : AppCompatActivity() {
             intent.putExtra("Email", mail)
             intent.putExtra("Age", ageV2)
             intent.putExtra("Gender", genre)
-            intent.putExtra("img", imageUri.toString());
+            intent.putExtra("img", encodedImage);
             startActivity(intent)
 
+        }
+
+
+        if (mSharedPref.getBoolean("remembered", false)){
+            val intent = Intent(this, resultNew::class.java)
+            intent.putExtra("Android", mSharedPref.getInt("android", 0))
+            intent.putExtra("iOS", mSharedPref.getInt("iOS", 0))
+            intent.putExtra("Flutter", mSharedPref.getInt("flutter", 0))
+            intent.putExtra("Language", mSharedPref.getString("lang", ""))
+            intent.putExtra("Hobbies", mSharedPref.getString("hb", ""))
+            intent.putExtra("Name", mSharedPref.getString("name", ""))
+            intent.putExtra("Age", mSharedPref.getString("lang", ""))
+            intent.putExtra("Email", mSharedPref.getString("mail", ""))
+            intent.putExtra("Gender", mSharedPref.getString("genre", ""))
+            intent.putExtra("img", mSharedPref.getString("img", ""))
+            startActivity(intent)
+            return;
         }
 
     }
@@ -131,6 +153,15 @@ class MainActivity : AppCompatActivity() {
         if (resultCode == RESULT_OK && requestCode == pickImage) {
             imageUri = data?.data
             binding.profilePic.setImageURI(imageUri)
+            val baos = ByteArrayOutputStream()
+            val bitmap = binding.profilePic.drawable.toBitmap()
+            bitmap.compress(Bitmap.CompressFormat.PNG, 100, baos)
+            encodedImage = Base64.encodeToString(baos.toByteArray(), Base64.DEFAULT)
+            with(mSharedPref.edit())
+            {
+                putString("img", encodedImage)
+                apply()
+            }
         }
     }
 

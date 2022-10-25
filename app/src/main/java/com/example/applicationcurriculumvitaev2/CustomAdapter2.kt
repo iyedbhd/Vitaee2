@@ -1,23 +1,29 @@
 package com.example.applicationcurriculumvitaev2
+import android.graphics.BitmapFactory
+import android.util.Base64
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.applicationcurriculumvitaev2.data.Education
+import com.example.applicationcurriculumvitaev2.databinding.CardViewDesign2Binding
+import com.example.applicationcurriculumvitaev2.databinding.CardViewDesignBinding
 
-class CustomAdapter2(private val mList: List<ItemsViewModel2>) : RecyclerView.Adapter<CustomAdapter2.ViewHolder>() {
+class CustomAdapter2(private val mList: List<Education>) : RecyclerView.Adapter<CustomAdapter2.ViewHolder>() {
 
-    var onItemClick: ((ItemsViewModel2) -> Unit)? = null
+    var onItemClick: ((Education) -> Unit)? = null
+    private lateinit var binding: CardViewDesign2Binding;
 
     // create new views
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         // inflates the card_view_design view
         // that is used to hold list item
-        val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.card_view_design2, parent, false)
-
-        return ViewHolder(view)
+        val inflator = LayoutInflater.from(parent.context);
+        //val view = inflator.inflate(R.layout.card_view_design, parent, false);
+        binding = CardViewDesign2Binding.inflate(inflator, parent, false);
+        return ViewHolder(binding.root)
     }
 
     // binds the list items to a view
@@ -25,11 +31,17 @@ class CustomAdapter2(private val mList: List<ItemsViewModel2>) : RecyclerView.Ad
 
         val ItemsViewModel = mList[position]
 
-        // sets the image to the imageview from our itemHolder class
-        holder.imageView.setImageResource(ItemsViewModel.image)
+        val imageBytes = Base64.decode(ItemsViewModel.pic, Base64.DEFAULT)
+        val decodedImage = BitmapFactory.decodeByteArray(imageBytes, 0, imageBytes.size)
+
+        binding.imageview.setImageBitmap(decodedImage)
+
 
         // sets the text to the textview from our itemHolder class
-        holder.textView.text = ItemsViewModel.text
+
+        binding.dateTxt.setText(ItemsViewModel.startDate);
+        binding.titleTxt.setText(ItemsViewModel.companyName);
+        binding.locationText.setText(ItemsViewModel.companyAddress);
 
     }
 
@@ -40,12 +52,12 @@ class CustomAdapter2(private val mList: List<ItemsViewModel2>) : RecyclerView.Ad
 
     // Holds the views for adding it to image and text
     inner class ViewHolder(ItemView: View) : RecyclerView.ViewHolder(ItemView) {
-        val imageView: ImageView = itemView.findViewById(R.id.imageview)
+        /*val imageView: ImageView = itemView.findViewById(R.id.imageview)
         val textView: TextView = itemView.findViewById(R.id.textView)
         init {
             itemView.setOnClickListener {
                 onItemClick?.invoke(mList[adapterPosition])
             }
-        }
+        }*/
     }
 }

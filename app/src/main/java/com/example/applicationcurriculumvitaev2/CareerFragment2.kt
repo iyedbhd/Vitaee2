@@ -10,6 +10,7 @@ import com.example.applicationcurriculumvitaev2.databinding.ActivityMainBinding
 import com.example.applicationcurriculumvitaev2.databinding.FragmentCareer2Binding
 import com.example.applicationcurriculumvitaev2.databinding.FragmentCareerBinding
 import com.example.applicationcurriculumvitaev2.databinding.FragmentSkillsBinding
+import tn.esprit.loldatastorage.utils.AppDataBase
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -22,6 +23,8 @@ import com.example.applicationcurriculumvitaev2.databinding.FragmentSkillsBindin
 class CareerFragment2 : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var binding: FragmentCareer2Binding;
+    lateinit var dataBase : AppDataBase
+
     val Experiences:List<ItemsViewModel2> = listOf(
         ItemsViewModel2(R.drawable.ic_logo_massachusetts, "Massachusetts"),
         ItemsViewModel2(R.drawable.ic_logo_cambridge, "Cambridge"),
@@ -40,7 +43,9 @@ class CareerFragment2 : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentCareer2Binding.inflate(inflater, container, false);
         binding.recyclerview.layoutManager = LinearLayoutManager(context);
-        val adapter = CustomAdapter2(Experiences)
+        dataBase = AppDataBase.getDatabase(binding.recyclerview.context)
+
+        val adapter = CustomAdapter2(dataBase.eduDAO().getAll())
         binding.recyclerview.adapter = adapter
 
         return binding.root;

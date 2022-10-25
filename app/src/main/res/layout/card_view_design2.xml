@@ -25,7 +25,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView9"
+            android:id="@+id/locationText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="116dp"
@@ -38,7 +38,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView11"
+            android:id="@+id/dateTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
@@ -51,7 +51,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/textView"
+            android:id="@+id/titleTxt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="12dp"
@@ -61,7 +61,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.076"
             app:layout_constraintStart_toEndOf="@+id/imageview"
-            app:layout_constraintTop_toBottomOf="@+id/textView11" />
+            app:layout_constraintTop_toBottomOf="@+id/dateTxt" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

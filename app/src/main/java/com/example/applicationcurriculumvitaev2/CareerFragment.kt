@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.applicationcurriculumvitaev2.databinding.ActivityMainBinding
 import com.example.applicationcurriculumvitaev2.databinding.FragmentCareerBinding
 import com.example.applicationcurriculumvitaev2.databinding.FragmentSkillsBinding
+import tn.esprit.loldatastorage.utils.AppDataBase
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -21,12 +22,8 @@ import com.example.applicationcurriculumvitaev2.databinding.FragmentSkillsBindin
 class CareerFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private lateinit var binding: FragmentCareerBinding;
-    val Experiences:List<ItemsViewModel> = listOf(
-        ItemsViewModel(R.drawable.ic_logo_amazon, "Amazon"),
-        ItemsViewModel(R.drawable.ic_logo_cambridge, "Cambridge"),
-        ItemsViewModel(R.drawable.ic_logo_esprit, "Esprit"),
-        ItemsViewModel(R.drawable.ic_logo_facebook, "Facebook")
-    );
+    lateinit var dataBase : AppDataBase
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -38,9 +35,12 @@ class CareerFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
+
+
         binding = FragmentCareerBinding.inflate(inflater, container, false);
         binding.recyclerview.layoutManager = LinearLayoutManager(context);
-        val adapter = CustomAdapter(Experiences)
+        dataBase = AppDataBase.getDatabase(binding.recyclerview.context)
+        val adapter = CustomAdapter(dataBase.expDAO().getAll())
         binding.recyclerview.adapter = adapter
 
         return binding.root;
